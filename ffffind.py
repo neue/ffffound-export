@@ -101,7 +101,7 @@ def main(user, pages="all"):
 
 				# I can only apologise.
 				try:
-					r = requests.get(i['image_url'])
+					r = requests.get(i['backup_url'])
 					print "... done."
 					with open(img_path+i["filename"], 'wb') as f:
 						f.write(r.content)
@@ -133,7 +133,7 @@ def main(user, pages="all"):
 
 			page += 1
 		else:
-			print "Reached the end of the list, stopping."
+			print "Reached the end of the list for "+user+", stopping."
 			break
 
 	if len(all_images) == 0:
@@ -196,7 +196,7 @@ if __name__ == '__main__':
 				os.mkdir(sys.argv[1]+"/images")
 			else:
 				print "%s directory already exists." % sys.argv[1]
-				sys.exit()
+                # sys.exit()
 		except:
 			print "Error creating directory."
 			sys.exit()
